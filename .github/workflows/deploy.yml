@@ -21,10 +21,6 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      # Se quiser rodar testes, coloca aqui:
-      # - name: Rodar testes
-      #   run: npm test
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -34,10 +30,10 @@ jobs:
       - name: Deploy via SSH na VM
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
+          host: ${{ secrets.SSH_HOST }}      # 66.94.100.158
+          username: ${{ secrets.SSH_USER }}  # sistema
+          key: ${{ secrets.SSH_KEY }}        # chave pra entrar na VM
+          port: ${{ secrets.SSH_PORT }}      # 23542
           script: |
-            cd ~/deploy-pipeline-teste
+            cd /home/sistema/deploy-pipeline-teste
             ./deploy.sh
