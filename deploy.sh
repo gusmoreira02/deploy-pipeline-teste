@@ -2,7 +2,7 @@
 set -e
 
 echo "==> [deploy-pipeline-teste] Entrando na pasta do projeto"
-cd /root/deploy-pipeline-teste
+cd /home/sistema/deploy-pipeline-teste
 
 echo "==> Atualizando código da branch main"
 git fetch origin
